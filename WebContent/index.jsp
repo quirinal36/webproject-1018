@@ -7,11 +7,7 @@
 LocalDate today = LocalDate.now();
 LocalDate firstDayOfThisMonth = LocalDate.now().withDayOfMonth(1);
 int firstDayWeekday = firstDayOfThisMonth.getDayOfWeek().getValue();
-
 LocalDate lastDayOfThisMonth = LocalDate.now().withDayOfMonth(today.lengthOfMonth());
-
-Logger logger = Logger.getLogger("index.jsp");
-logger.info(firstDayOfThisMonth.toString());
 %>
 <!DOCTYPE html>
 <html>
@@ -21,39 +17,27 @@ logger.info(firstDayOfThisMonth.toString());
 </head>
 <body>
 <table border="1">
-<%while(firstDayOfThisMonth.getDayOfMonth() != lastDayOfThisMonth.getDayOfMonth()) {
-%>
-	<tr>
-		<%
-		for(int i=1; i<=7; i++){
-			if(firstDayOfThisMonth.getDayOfMonth() == 1 && firstDayWeekday > i){
-				%>
-				<td></td>
-				<%	
-			}else{
+	<%
+	while(firstDayOfThisMonth.getMonthValue() == today.getMonthValue()) {
+	%>
+		<tr>
+			<%
+			for(int i=1; i<=7; i++){
+				if(firstDayOfThisMonth.getMonthValue() > today.getMonthValue()){
+					break;
+				}
 				%>
 				<td>
-				<a href="./apply/list.jsp?selected=<%=firstDayOfThisMonth.toString()%>">
 					<%=firstDayOfThisMonth.getMonthValue() %>월
-					<%=firstDayOfThisMonth.getDayOfMonth() %>일(<%=firstDayOfThisMonth.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.KOREA) %>)
-				</a>
-				<br>
-				<br>
-				
+					<%=firstDayOfThisMonth.getDayOfMonth() %>일
+					(<%=firstDayOfThisMonth.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.KOREA) %>)
 				</td>
 				<%
 				firstDayOfThisMonth = firstDayOfThisMonth.plusDays(1);
-				if(firstDayOfThisMonth.getDayOfMonth() == 1){
-					break;
-				}
 			}
-		}
-		if(firstDayOfThisMonth.getDayOfMonth() == 1){
-			break;
-		}
-		%>
-	</tr>
-<%} %>
+			%>
+		</tr>
+	<%} %>
 </table>
 
 </body>
