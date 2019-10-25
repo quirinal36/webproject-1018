@@ -3,8 +3,10 @@ package lee.hg;
 public class User {
 	private String name;
 	private int age;
+	private String phone;
 	
 	// getter 와 setter 만들기
+	// shift + alt + s
 	public String getName() {
 		return name;
 	}
@@ -17,4 +19,11 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 }

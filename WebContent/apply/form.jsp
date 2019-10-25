@@ -16,7 +16,7 @@
 <title><%=today.toString() %> <%=hour %>시 예약</title>
 </head>
 <body>
-	<form action="">
+	<form action="./insert" method="POST">
 		<table>
 			<tr>
 				<td>이름</td>
@@ -35,18 +35,20 @@
 				<td>
 					<select name="subject">
 						<option>선택 해주세요.</option>
-						<option>스크래치</option>
-						<option>파이썬</option>
-						<option>자바</option>
+						<option value="1">스크래치</option>
+						<option value="2">파이썬</option>
+						<option value="3">자바</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="button" value="저장하기"/>
+					<input type="submit" value="저장하기"/>
 				</td>
 			</tr>
 		</table>
+		<input type="hidden" name="date" value="<%=today.toString() %>"/>
+		<input type="hidden" name="time" value="<%=hour %>"/>
 	</form>
 </body>
 </html>

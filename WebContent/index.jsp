@@ -31,6 +31,8 @@ LocalDate lastDayOfThisMonth = LocalDate.now().withDayOfMonth(today.lengthOfMont
 					<%=firstDayOfThisMonth.getMonthValue() %>월
 					<%=firstDayOfThisMonth.getDayOfMonth() %>일
 					(<%=firstDayOfThisMonth.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.KOREA) %>)
+					<br>
+					<a href="./apply/list.jsp?selected=<%=firstDayOfThisMonth.toString()%>">상세보기</a>
 				</td>
 				<%
 				firstDayOfThisMonth = firstDayOfThisMonth.plusDays(1);
