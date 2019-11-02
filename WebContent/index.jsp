@@ -14,33 +14,48 @@ LocalDate lastDayOfThisMonth = LocalDate.now().withDayOfMonth(today.lengthOfMont
 <head>
 <meta charset="UTF-8">
 <title>상담일지</title>
+<style type="text/css">
+* { padding: 0; margin: 0; border: 0; }
+html, body, #wrap { min-height: 100%; }
+
+/* container */
+#header { width: 100%; padding: 10px 0; background: #4cb8a4; text-align: center; color: #fff; }
+#container_wrap { position: relative; width: 100%; min-height: 100%; }
+#sidebar_left,
+#sidebar_right {
+	position: absolute;
+	top: 0;
+	width: 200px;
+	height: 100%;
+	padding: 30px;
+	box-sizing: border-box;
+}
+#sidebar_left { left: 0; }
+#sidebar_right { right: 0; }
+#contents_print { margin: 0 200px; padding: 30px; box-sizing: border-box; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+</style>
 </head>
 <body>
-<table border="1">
-	<%
-	while(firstDayOfThisMonth.getMonthValue() == today.getMonthValue()) {
-	%>
-		<tr>
-			<%
-			for(int i=1; i<=7; i++){
-				if(firstDayOfThisMonth.getMonthValue() > today.getMonthValue()){
-					break;
-				}
-				%>
-				<td>
-					<%=firstDayOfThisMonth.getMonthValue() %>월
-					<%=firstDayOfThisMonth.getDayOfMonth() %>일
-					(<%=firstDayOfThisMonth.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.KOREA) %>)
-					<br>
-					<a href="./apply/list.jsp?selected=<%=firstDayOfThisMonth.toString()%>">상세보기</a>
-				</td>
-				<%
-				firstDayOfThisMonth = firstDayOfThisMonth.plusDays(1);
-			}
-			%>
-		</tr>
-	<%} %>
-</table>
-
+<div id="wrap">
+	<div id="header">
+		<%@include file="./menu/top.jsp"%>
+	</div>
+	<div id="container_wrap">
+		<div id="sidebar_left">
+			<%@include file="./menu/left.jsp"%>
+		</div>
+		<div id="sidebar_right">
+			<%@include file="./menu/right.jsp"%>
+		</div>
+		<div id="contents_print">
+			<br>
+			<font size="20">첫화면</font>
+			<h1>헤더1</h1>
+			<h2>헤더2</h2>
+			<h3>헤더3</h3>
+			<h4>헤더4</h4>
+		</div>
+	</div>
+</div>
 </body>
 </html>
